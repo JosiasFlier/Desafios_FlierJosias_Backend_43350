@@ -1,3 +1,5 @@
+// import fs from 'fs'
+
 class ProductManager {
     #products
     #error
