@@ -1,8 +1,8 @@
 {
-  "name": "desafio_clase02",
+  "name": "desafio_clase04",
   "version": "1.0.0",
   "description": "",
-  "main": "desafio_clase02.js",
+  "main": "desafio_clase04.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
