@@ -1,0 +1,20 @@
+[
+	{
+		"id": 1,
+		"title": "Hábitos atómicos",
+		"description": "Desarrollo personal",
+		"price": 10000,
+		"thumbnail": "https://pbs.twimg.com/media/FiuxTYDWAAM40ql.jpg:large",
+		"code": 12345678,
+		"stock": 20
+	},
+	{
+		"id": 2,
+		"title": "Código limpio",
+		"description": "Desarrollo de software",
+		"price": 12000,
+		"thumbnail": "https://images.cdn1.buscalibre.com/fit-in/360x360/87/da/87da3d378f0336fd04014c4ea153d064.jpg",
+		"code": 12345679,
+		"stock": 10
+	}
+]
