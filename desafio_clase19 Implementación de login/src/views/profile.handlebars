@@ -1,0 +1,21 @@
+<div>
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-body">
+                <h1 class="card-title">Perfil de Usuario</h1>
+                <p class="card-text">Nombre: {{ this.first_name }}</p>
+                <p class="card-text">Apellido: {{ this.last_name }}</p>
+                <p class="card-text">Correo electrónico: {{ this.email }}</p>
+                <p class="card-text">Edad: {{ this.age }}</p>
+                <form action="/api/sessions/logout" method="GET">
+                    <button type="submit" class="btn btn-danger">Cerrar Sesión</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Incluye Bootstrap JS (opcional) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</div>

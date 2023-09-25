@@ -81,10 +81,11 @@
 
     <hr />
 
-    <table class="table table-bordered table-striped table-hover mt-5 text-center" id="productsTable">
+    <table class="table table-bordered table-striped table-hover mt-5 text-center align-middle" id="productsTable">
         <thead class="table-dark">
             <tr>
                 <th>Title</th>
+                <th>Libro</th>
                 <th>Description</th>
                 <th>Price</th>
                 <th>Code</th>
@@ -94,9 +95,10 @@
             </tr>
         </thead>
         <tbody id="tbody">
-            {{#each books}}
+            {{#each products}}
                 <tr>
                     <td>{{this.title}}</td>
+                    <td><img src="{{this.thumbnails.[0]}}" style="max-width: 60px;"></td>
                     <td>{{this.description}}</td>
                     <td>{{this.price}}</td>
                     <td>{{this.code}}</td>
@@ -105,7 +107,7 @@
                     <td>
                         <button
                             class="btn btn-danger"
-                            onclick="deleteProduct({{this.id}})"
+                            onclick="deleteProduct('{{this._id}}')"
                         >
                             ❌
                         </button>
