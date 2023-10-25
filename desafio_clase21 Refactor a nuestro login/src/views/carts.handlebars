@@ -1,0 +1,14 @@
+<div>
+    <span>ID del Carrito :  {{cid}}</span>
+</div>
+<div>
+    <ul>
+        <h4>Productos agregados al carrito</h4>
+        </br>
+        {{#each products}}
+        <li>
+            {{this.product}} - {{this.quantity}}
+        </li>
+        {{/each}}
+    </ul>
+</div>
