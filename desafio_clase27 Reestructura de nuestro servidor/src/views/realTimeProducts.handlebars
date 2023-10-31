@@ -1,0 +1,121 @@
+<div class="container">
+    <h2 class="text-center mb-4">Real Time Products</h2>
+
+    <hr />
+
+    <div class="card mb-5 col-md-6 offset-md-3">
+        <div class="card-header bg-primary text-center text-white">
+            <h5>Created Products</h5>
+        </div>
+        <div class="card-body">
+            <form id="form">
+                <div class="mb-3">
+                    <input
+                        type="text"
+                        class="form-control"
+                        name="title"
+                        id="title"
+                        placeholder="Title"
+                        required
+                    />
+                </div>
+                <div class="mb-3">
+                    <input
+                        type="text"
+                        class="form-control"
+                        name="description"
+                        id="description"
+                        placeholder="Description"
+                        required
+                    />
+                </div>
+                <div class="mb-3">
+                    <input
+                        type="number"
+                        class="form-control"
+                        name="price"
+                        id="price"
+                        step="0.01"
+                        placeholder="Price"
+                        required
+                    />
+                </div>
+                <div class="mb-3">
+                    <input
+                        type="text"
+                        class="form-control"
+                        name="code"
+                        id="code"
+                        placeholder="Code"
+                        required
+                    />
+                </div>
+                <div class="mb-3">
+                    <input
+                        type="text"
+                        class="form-control"
+                        name="category"
+                        id="category"
+                        placeholder="Category"
+                        required
+                    />
+                </div>
+                <div class="mb-3">
+                    <input
+                        type="number"
+                        class="form-control"
+                        name="stock"
+                        id="stock"
+                        placeholder="Stock"
+                        required
+                    />
+                </div>
+                <button
+                    type="submit"
+                    class="btn btn-success form-control fw-bold"
+                    id="addProduct"
+                >Add Product</button>
+            </form>
+        </div>
+    </div>
+
+    <hr />
+
+    <table class="table table-bordered table-striped table-hover mt-5 text-center align-middle" id="productsTable">
+        <thead class="table-dark">
+            <tr>
+                <th>Title</th>
+                <th>Libro</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Code</th>
+                <th>Category</th>
+                <th>Stock</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="tbody">
+            {{#each products}}
+                <tr>
+                    <td>{{this.title}}</td>
+                    <td><img src="{{this.thumbnails.[0]}}" style="max-width: 60px;"></td>
+                    <td>{{this.description}}</td>
+                    <td>{{this.price}}</td>
+                    <td>{{this.code}}</td>
+                    <td>{{this.category}}</td>
+                    <td>{{this.stock}}</td>
+                    <td>
+                        <button
+                            class="btn btn-danger"
+                            onclick="deleteProduct('{{this._id}}')"
+                        >
+                            ❌
+                        </button>
+                    </td>
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/index.js"></script>
