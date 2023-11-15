@@ -1,0 +1,55 @@
+
+
+
+
+<div class="container">
+        
+
+
+        <h1 class="card cart-title mt-4 text-center">CARRITO DE COMPRAS</h1>
+        {{#if cart.length}}
+            <table class="table cart-table">
+            <thead class="thead-dark text-center">
+                <tr>
+                    <th scope="col" class="align-middle">Libro</th>
+                    <th scope="col" class="align-middle">Titulo</th>
+                    <th scope="col" class="align-middle">Precio</th>
+                    <th scope="col" class="align-middle">Cantidad</th>
+                    <th scope="col" class="align-middle">Remover</th>
+                </tr>
+            </thead>
+            <tbody class="cart-body text-center">
+                {{#each cart}}
+                    <tr>
+                        <td class="align-middle">
+                            <img height="100" src="{{this.product.thumbnails.[0]}}" alt="{{this.product.title}}" />
+                        </td>
+                        <td class="align-middle">{{this.product.title}}</td>
+                        <td class="align-middle">$ {{this.product.price}}</td>
+                        <td class="align-middle">{{this.quantity}}</td>
+                        <td class="align-middle">
+                            <button type="button" class="btn btn-danger" onclick="deleteProduct(`{{this.product._id}}`)">❌</button>
+                        </td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+        <form onsubmit="handleCheckout()">
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <button type="button" class="btn btn-primary btn-block" data-cart="{{userInfo.cartId}}" id="purchase">Finalizar Compra</button>
+            </div>
+        </form>
+        <button type="button" class="btn btn-danger" onclick="deleteCart()">Vaciar el carrito</button>
+        {{else}}
+            <div class="container text-center">
+                <h2 class="mt-4 white-text">Tu Carrito está vacío</h2>
+                <img src="https://i.ibb.co/82j87bz/empty-cart.png" alt="Empty Cart" class="empty-cart img-fluid w-50 mx-auto mt-5">
+                <div class="mt-5">
+                    <a href="http://localhost:8080/products" class="btn btn-warning btn-lg btn-block">Volver a la vista de productos</a>
+                </div>
+            </div>
+        {{/if}}
+        
+</div>
+
+<script src="/cart.js"></script>

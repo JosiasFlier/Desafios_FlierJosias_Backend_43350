@@ -1,0 +1,177 @@
+<div class="container-fluid custom-container">
+
+{{!-- BARRA DE FILTROS - CATEGORIA / LIMIT / SORT --}}
+  <div class="filters">
+    <form action="/products" method="GET">
+    <div class="row filter-bar p-3">
+        <div class="col-sm-3">
+            <div class="form-inline aligned-container">
+                <label for="category" class="mr-2">Categoria</label>
+                <select name="category" id="category" class="form-control">
+                    <option value="">Todas</option>
+                    <option value="Informática">Informática</option>
+                    <option value="Psicología">Psicología</option>
+                    <option value="Novela">Novela</option>
+                    <option value="Novela fantástica">Novela fantástica</option>
+                    <option value="Desarrollo personal">Desarrollo personal</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="form-inline aligned-container">
+                <label for="limit" class="mr-2">Limite de productos</label>
+                <input
+                    type="number"
+                    name="limit"
+                    id="limit"
+                    min="1"
+                    max="100"
+                    class="form-control"
+                    value="{{products.limit}}"
+                />
+            </div>
+        </div>
+        <div class="col-sm-2">
+          <div class="form-inline aligned-container">
+            <div class="justify-content-evenly">
+              {{!-- Aplica los filtros --}}
+              <button type="submit" class="btn btn-info m-1 pb-1 pt-1">Aplicar</button>
+              {{!-- Elimina los filtros --}}
+              <a href="/products">
+                  <button type="button" class="btn btn-warning m-1 pb-1 pt-1">limpiar</button>
+              </a>
+
+            </div>
+          </div>  
+        </div>
+        </form>
+
+        <div class="col-sm-3">
+          <div class="form-inline aligned-container" style="align-items: center;">
+            <p class="d-inline-block mb-0 ">Ordenar por precio</p>
+            <div class="d-flex justify-content-between">
+              <a href="http://localhost:8080/products?limit={{products.limit}}&page={{products.page}}&sort=asc"
+                class="btn btn btn-outline-dark mx-1">Menor</a>
+              <a href="http://localhost:8080/products?limit={{products.limit}}&page={{products.page}}&sort=desc"
+                class="btn btn btn-outline-dark mx-1">Mayor</a>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <hr>
+
+        <div class="d-flex justify-content-center mb-3">
+  {{#if products.hasPrevPage}}
+    <a href="http://localhost:8080/products?limit={{products.limit}}&page={{products.prevPage}}"
+      class="btn btn-primary btn-sm mr-4">◄◄◄◄◄◄◄◄ Página anterior</a>
+  {{else}}
+    <a href="#" class="btn btn-outline-secondary btn-sm mr-4">◄◄◄◄◄◄◄◄ Página anterior</a>
+  {{/if}}
+  {{#if products.hasNextPage}}
+    <a href="http://localhost:8080/products?limit={{products.limit}}&page={{products.nextPage}}"
+      class="btn btn-primary btn-sm ml-4">Página siguiente ►►►►►►►►</a>
+  {{else}}
+    <a href="#" class="btn btn-outline-secondary btn-sm ml-4">Página siguiente ►►►►►►►►</a>
+  {{/if}}
+</div>
+
+<hr>
+
+{{!-- CARD - LISTADO DE PORDUCTOS --}}
+  <div class="row row-cols-1 row-cols-xl-4 row-cols-lg-3 row-cols-md-2 g-4" style="display: flex; flex-wrap: wrap;">
+    {{#each products.docs}}
+      <div class="col" style="margin-bottom: 20px;">
+        <div class="card card1 card-border border-4 d-flex flex-column" style="height: 100%;">
+          <div class="aspect-ratio-box" style="padding: 10px">
+            <a href="http://localhost:8080/products/{{this._id}}">
+              <img src="{{this.thumbnails.[0]}}" style="border-top-left-radius: 15px; border-top-right-radius: 15px;" class="img-fluid w-100" alt="{{this.title}}" />
+            </a>
+          </div>
+
+          <div class="abajo" style="margin-top: auto;">
+          <div class="d-flex justify-content-center align-items-center text-center ">
+              <h3 class="p-1 text-center ">{{this.title}}</h3>
+          </div>
+
+          <div class="card-body border-top-1">
+            <div class="d-flex justify-content-between">
+              <p class="small text-muted">{{this.category}}</p>
+            </div>
+
+            <div class="d-flex justify-content-between mb-3">
+              <p class=" mb-0">Stock: <span class="fw-bold">{{this.stock}}</span></p>
+              <h5 class="text-dark mb-0">${{this.price}}</h5>
+            </div>
+
+            <div class="d-flex justify-content-between ">
+              <a href="http://localhost:8080/products/{{this._id}}">
+                  <button class="btn btn-outline-info" style="font-weight: bold;" href="http://localhost:8080/products/{{this._id}}">Info</button>
+              </a>
+
+              <button class="btn btn-success" onclick="addProductToCart2(`{{this._id}}`, `{{userInfo.cartId}}`)">Añadir al carrito</button>
+            </div>
+
+          </div>
+          </div>
+        </div>
+      </div>
+    {{/each}}
+</div>
+
+</div>
+
+
+{{!-- userInfo = {
+            first_name: req.session.user.first_name,
+            last_name: req.session.user.last_name,
+            fullName: `${req.session.user.first_name} ${req.session.user.last_name}`,
+            email: req.session.user.email,
+            age: req.session.user.age,
+            cartId: --}}
+
+
+
+
+{{!-- <script src="/socket.io/socket.io.js"></script> --}}
+<script src="/productDetail.js"></script>
+
+
+
+<style>
+  .custom-container {
+    padding: 4vw; /* Espacio de relleno interior del contenedor */
+  }
+
+  .card1 {
+    transition: transform 0.3s;
+    background-color: rgba(225, 225, 225, 0.812);"
+    border-color: #2B0206;
+    border-radius: 15px;
+  }
+
+  .filter-bar {
+    background-color: rgba(225, 225, 225, 0.812);"
+  }
+
+  .card-border {
+    border-color: #2B0206;
+  }
+
+  .card1:hover {
+    transform: scale(1.01);
+  }
+
+  .aligned-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%; 
+}
+
+
+</style>
+
+
+
+

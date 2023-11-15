@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="card card mb-3 shadow-sm mt-4" style="background-color: rgba(255, 255, 255, 0.5); border: none;">
+        <div class="row g-0 ">
+            <div class="col-md-6 col-lg-4 d-flex">
+                <img class="card-img-top" src="{{product.thumbnails.[0]}}" alt="{{product.title}}" style="object-fit: contain;" />
+            </div>
+            <div class="col-md-6 col-lg-8">
+                <div class="card-body">
+                    <h3 class="card-title text-black text-center" style="font-size: 40px;">{{product.title}}</h3>
+                    <hr>
+                    <p class="card-text text-black text-center" style="font-size: 20px;">{{product.category}}</p>
+                    <hr><br>
+                    <p class="card-text text-black text-center" style="font-size: 25px;">{{product.description}}</p>
+                    <hr><br>
+                    <div style="display: flex; justify-content: space-evenly;">
+                        <div class="d-grid gap-2 col-6 mx-auto">
+                            <button type="button" class="btn btn-primary btn-block" onclick="addProductToCart(`{{product._id}}`, `{{userInfo.cartId}}`)">Agregar al Carrito</button>
+                            <a href="http://localhost:8080/products" class="btn btn-secondary btn-block">Atras</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/productDetail.js"></script>
+

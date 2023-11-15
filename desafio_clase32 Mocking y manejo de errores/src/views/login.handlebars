@@ -1,0 +1,52 @@
+<hr>
+<hr>
+<div class="card mb-5 col-md-6 offset-md-3">
+    <hr>
+        <div class="card-header bg-primary text-center text-white">
+            <h5>INICIO DE SESIÓN</h5>
+        </div>
+        <div class="card-body">
+            <form id="loginForm" method="POST">
+                <div class="mb-3">
+                    <input
+                        type="text"
+                        class="form-control"
+                        name="email"
+                        id="email"
+                        placeholder="e-mail"
+                        required
+                    />
+                </div>
+                <div class="mb-3">
+                    <input
+                        type="password"
+                        class="form-control"
+                        name="password"
+                        id="password"
+                        placeholder="Contraseña"
+                        required
+                    />
+                </div>
+                <button
+                    type="submit"
+                    class="btn btn-success form-control fw-bold"
+                    id="addProduct"
+                >Iniciar Sesión</button>
+                <div class="dropdown-divider"></div>
+                <div>
+
+                <button
+                    onclick="location.href='/api/sessions/github'"
+                    class="btn btn-dark form-control fw-bold"
+                >Entrar con GitHub</button>
+                <div class="dropdown-divider"></div>
+                <button
+                    onclick="location.href='/api/sessions/register'"
+                    class="btn btn-secondary form-control fw-bold"
+                >Registrarse</button>
+
+                </div>
+            </form>
+        </div>
+    </div>
+<script src="/login.js"></script>

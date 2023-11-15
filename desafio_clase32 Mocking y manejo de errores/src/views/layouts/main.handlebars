@@ -1,0 +1,167 @@
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>TODO LIBROS</title>
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+        />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+        />
+        <style>
+            body {
+            background-image: url('https://i.ibb.co/qC2KRkB/fondo-Libros.jpg'); /* Ruta relativa a la imagen de fondo */
+            background-size: 100% auto; /* Ajusta el ancho de la imagen al ancho de la página y ajusta la altura automáticamente */
+            background-repeat: repeat-y; /* Repite la imagen verticalmente */
+            }
+            .card {
+                background-color: rgba(255, 255, 255, 0.5); /* Color de fondo de la tarjeta con opacidad */
+            }
+
+            .title-td {
+                background-color: #2B0206;
+                text-align: center;
+                color: white;
+                font-weight: bold;
+                font-size: 3em;
+                font-style: italic;
+            }
+
+            .white-text {
+            color: white;
+            }
+                
+                
+
+        </style>
+        <!-- Agregar enlaces a los archivos CSS y JS de Bootstrap -->
+        <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        />
+        <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+        ></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"
+        ></script>
+        <script
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        ></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    </head>
+    <body>
+        <h1 class="text-center title-td"> TODO LIBROS </h1>
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarNav"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <!-- Elementos a la izquierda -->
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">Inicio
+                            <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/products">Productos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a
+                            class="nav-link"
+                            href="/products/realTimeProducts"
+                        >RealTimeProducts</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a
+                            class="nav-link dropdown-toggle"
+                            href="#"
+                            id="navbarDropdown"
+                            role="button"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                        >
+                            APIs
+                        </a>
+                        <div
+                            class="dropdown-menu"
+                            aria-labelledby="navbarDropdown"
+                        >
+                            <a
+                                class="dropdown-item"
+                                href="/api/products"
+                            >ApiProducts</a>
+                            <a
+                                class="dropdown-item"
+                                href="/api/carts"
+                            >ApiCarts</a>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    <!-- Elementos a la derecha -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="/api/sessions/register">Registrarse</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/api/sessions/login">Iniciar sesión</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/api/sessions/profile">Perfil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/api/sessions/logout">Cerrar sesión</a>
+                    </li>
+                    <li class="nav-item">
+                        <a
+                            class="nav-link"
+                            href="/products/carts/{{userInfo.cartId}}"
+                        >🛒</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        {{!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid d-flex justify-content-center align-items-center">
+                <p class="text-center">Bienvenido/a, {{userInfo.first_name}}. Su rol es: {{userInfo.role}}</p>
+            </div>
+        </nav> --}}
+
+            {{!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid d-flex justify-content-center align-items-center">
+                <p class="text-center">Bienvenido/a, {{session.user.name}}. Su rol es: {{session.user.role}}</p>
+                </div>
+            </nav> --}}
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            {{#if userInfo}}
+            <div class="container-fluid d-flex justify-content-center align-items-center">
+                <p class="text-center">Bienvenido/a, {{userInfo.fullName}}. Su rol es: {{userInfo.role}}</p>
+            </div>
+            {{/if}}
+            </nav>
+
+
+        {{{body}}}
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        ></script>
+        <script
+            type="text/javascript"
+            src="https://cdn.jsdelivr.net/npm/toastify-js"
+        ></script>
+    </body>
+</html>
